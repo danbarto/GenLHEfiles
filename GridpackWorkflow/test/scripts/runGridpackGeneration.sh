@@ -20,9 +20,15 @@ echo $OUTDIR
 
 #copy patches and cards into correct location
 mkdir patches
+<<<<<<< HEAD
 cp ${WORKDIR}/ucsd.patch patches/
 #cp ${WORKDIR}/mgfixes.patch patches/
 #cp ${WORKDIR}/models.patch patches/
+=======
+#cp ${WORKDIR}/ucsd.patch patches/
+cp ${WORKDIR}/mgfixes.patch patches/
+cp ${WORKDIR}/models.patch patches/
+>>>>>>> 36f43658ede9d555f036284e8a1af20c07d91008
 mkdir -p cards/${PROCESS}
 cp ${WORKDIR}/${PROCESS}_run_card.dat cards/${PROCESS}
 cp ${WORKDIR}/${PROCESS}_proc_card.dat cards/${PROCESS}

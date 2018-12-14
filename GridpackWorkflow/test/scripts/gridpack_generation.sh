@@ -196,6 +196,7 @@ if [ ! -d ${AFS_GEN_FOLDER}/${name}_gridpack ]; then
   #Apply any necessary patches on top of official release
   #############################################
 
+<<<<<<< HEAD
   cd $MGBASEDIRORIG
   ls -la $PRODHOME
   ls -la $PRODHOME/patches/
@@ -204,6 +205,12 @@ if [ ! -d ${AFS_GEN_FOLDER}/${name}_gridpack ]; then
   cat $PRODHOME/patches/00*.patch | patch -p1
   echo "Applying patches needed for running with Condor"
   cat $PRODHOME/patches/ucsd_total.patch | patch -p1
+=======
+  patch -l -p0 -i $PRODHOME/patches/mgfixes.patch
+  patch -l -p0 -i $PRODHOME/patches/models.patch
+  #echo "Applying patches needed for running with Condor"
+  #patch -l -p0 -i $PRODHOME/patches/ucsd.patch
+>>>>>>> 36f43658ede9d555f036284e8a1af20c07d91008
 
 
   #if lhapdf6 external is available then above points to lhapdf5 and needs to be overridden
