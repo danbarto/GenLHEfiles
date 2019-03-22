@@ -1,6 +1,6 @@
 import FWCore.ParameterSet.Config as cms
 from Configuration.Generator.Pythia8CommonSettings_cfi import *
-from Configuration.Generator.MCTunes2017.PythiaCP5Settings_cfi import *
+from Configuration.Generator.MCTunes2017.PythiaCP2Settings_cfi import *
 
 externalLHEProducer = cms.EDProducer("ExternalLHEProducer",
     args = cms.vstring('RPV-MonoPhi_mUR-1250_slc6_amd64_gcc481_CMSSW_7_1_30_tarball.tar.xz'),
@@ -31,7 +31,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
   comEnergy = cms.double(13000.),
   PythiaParameters = cms.PSet(
     pythia8CommonSettingsBlock,
-    pythia8CP5SettingsBlock,
+    pythia8CP2SettingsBlock,
     JetMatchingParameters = cms.vstring(
       'JetMatching:setMad = off',
       'JetMatching:scheme = 1',
@@ -48,7 +48,7 @@ generator = cms.EDFilter("Pythia8HadronizerFilter",
       'Check:abortIfVeto = on',
     ), 
     parameterSets = cms.vstring('pythia8CommonSettings',
-      'pythia8CP5Settings',
+      'pythia8CP2Settings',
       'JetMatchingParameters'
     )
   ),
