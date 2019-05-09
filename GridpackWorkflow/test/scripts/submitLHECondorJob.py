@@ -9,7 +9,7 @@ import sys
 import argparse
 import shutil
 
-def submitCondorJob(proc, executable, options, infile, label, outputToTransfer=None, submit=False, proxy=os.environ["X509_USER_PROXY"], isGridpackJob=False):
+def submitCondorJob(proc, executable, options, infile, label, outputToTransfer=None, submit=False, proxy=os.environ["X509_USER_PROXY"], isGridpackJob=False, longJob=False):
     hostname = os.uname()[1]
     logDir = os.path.join("logs",proc)
     subfile = "condor_"+proc +"_"+label+".cmd"
@@ -20,9 +20,15 @@ def submitCondorJob(proc, executable, options, infile, label, outputToTransfer=N
       f.write("x509userproxy={0}\n".format(proxy))
       f.write("+DESIRED_Sites=\"T2_US_UCSD\"\n")
     if isGridpackJob :
-        f.write("+request_cpus=8\n")
+        f.write("request_cpus=8\n")
+    if longJob:
+        f.write("request_memory=4200MB\n")
     if hostname.count('lxplus'):
-      f.write('+JobFlavour = "testmatch"\n') #longlunch (2h) too short in some cases. tomorrow (1 day), testmatch (3 days), nextweek (1 week) also exist
+      if longJob:
+        f.write('+JobFlavour = "nextweek"\n')
+      else:
+        f.write('+JobFlavour = "testmatch"\n') #longlunch (2h) too short in some cases. tomorrow (1 day), testmatch (3 days), nextweek (1 week) also exist
+      f.write('requirements = (OpSysAndVer=?= "SLCern6")\n')
     f.write("Executable = "+executable+"\n")
     f.write("arguments =  "+(' '.join(options))+"\n")
     f.write("Transfer_Executable = True\n")
