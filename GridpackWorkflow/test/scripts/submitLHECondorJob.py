@@ -27,7 +27,7 @@ def submitCondorJob(proc, executable, options, infile, label, outputToTransfer=N
       if longJob:
         f.write('+JobFlavour = "nextweek"\n')
       else:
-        f.write('+JobFlavour = "testmatch"\n') #longlunch (2h) too short in some cases. tomorrow (1 day), testmatch (3 days), nextweek (1 week) also exist
+        f.write('+JobFlavour = "tomorrow"\n') #longlunch (2h) too short in some cases. tomorrow (1 day), testmatch (3 days), nextweek (1 week) also exist
       f.write('requirements = (OpSysAndVer=?= "SLCern6")\n')
     f.write("Executable = "+executable+"\n")
     f.write("arguments =  "+(' '.join(options))+"\n")
