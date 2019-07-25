@@ -2,7 +2,7 @@
 JOBS="jobs"
 TEMP="templatecards"
 PROC="VBF-C1N2"
-PART="_mChi-"
+PART="_mC1-"
 
 ### Create cards and SLHAs for all mass points
 

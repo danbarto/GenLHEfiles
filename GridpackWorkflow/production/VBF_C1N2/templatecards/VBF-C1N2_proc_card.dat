@@ -19,4 +19,4 @@ add process p p > x1+ n2  j j QED=2  @7
 add process p p > x1- n2  j j QED=2  @8
 add process p p > n2  n2  j j QED=2  @9
 
-output VBF-C1N2_mChi-%MNLSP% -nojpeg
+output VBF-C1N2_mC1-%MNLSP% -nojpeg
